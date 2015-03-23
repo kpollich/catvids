@@ -4,20 +4,35 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Cat Videos!</title>
 
 	<!--Lobster font-->
-	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
 	<!--Stylesheet-->
-	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" href="index.css">
 
 	<!--Local JS-->
-	<script type="text/javascript" src="index.js"></script>
+	<script src="scripts/index.js"></script>
+
+	<!--jQuery, Bootstrap, etc-->
+	<script src="scripts/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="scripts/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 </head>
 
 <body>
-	<p>Welcome to cat videos</p>
+<div class="jumbotron">
+	<div class="container"><h1>Welcome to cat videos</h1></div>
+</div>
+
+<div class="container form-inline dvSearchbar">
+	<input type="text" id="searchbar" class="form-control" placeholder="Search cat videos">
+	<button type="submit" class="btn btn-success">Search</button>
+</div>
+
 </body>
 
 </html>

@@ -1,3 +1,11 @@
 * {
 	font-family: 'Lobster', cursive;
 }
+
+.dvSearchbar {
+	text-align: center;
+}
+
+#searchbar{
+	width: 80%;
+}
