@@ -2,10 +2,18 @@
 	font-family: 'Lobster', cursive;
 }
 
+#top-bar {
+	text-align: center;
+}
+
 .dvSearchbar {
 	text-align: center;
 }
 
 #searchbar{
 	width: 80%;
+}
+
+#cat-head {
+	display: inline;
 }
