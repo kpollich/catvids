@@ -17,3 +17,13 @@
 #cat-head {
 	display: inline;
 }
+
+#player {
+	margin-top: 1%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#player-container {
+	text-align: center;
+}
