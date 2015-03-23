@@ -13,26 +13,29 @@
 	<!--Stylesheet-->
 	<link rel="stylesheet" href="index.css">
 
-	<!--Local JS-->
-	<script src="scripts/index.js"></script>
-
 	<!--jQuery, Bootstrap, etc-->
 	<script src="scripts/jquery-1.11.2.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="scripts/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
+	<!--Jquery Rotate-->
+	<script src="scripts/jQueryRotateCompressed.js"></script>
+
+	<!--Local JS-->
+	<script src="scripts/index.js"></script>
+
 	<link rel="shortcut icon" href="img/shortcut.ico">
 
 <body>
 <div class="jumbotron">
-	<div class="container" id="top-bar"><h1><img src="img/Giant-Cat-Head-1_burned.png" height="100" width="100" id="cat-head">The Catabase <img src="img/Giant-Cat-Head-1_burned.png" height="100" width="100" id="cat-head"></h1></div>
+	<div class="container" id="top-bar"><h1><img class="cat-head" src="img/Giant-Cat-Head-1_burned.png" height="100" width="100">The Catabase <img class="cat-head" src="img/Giant-Cat-Head-1_burned.png" height="100" width="100"></h1></div>
 </div>
 
 <div class="container form-inline dvSearchbar">
 	<input type="text" id="searchbar" class="form-control" placeholder="Search cat videos">
-	<button type="submit" class="btn btn-success">Search</button>
-	<button type="submit" class="btn btn-success">Random</button>
+	<button type="submit" id="submit-search" class="btn btn-success">Search</button>
+	<button type="submit" id="submit-random" class="btn btn-success">Random</button>
 
 </div>
 
