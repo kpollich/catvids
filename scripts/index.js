@@ -11,7 +11,7 @@ $(document).ready(function() {
 		function() {
 			$(this).addClass("search-button-shadow");
 		},
-		functon() {
+		function() {
 			$(this).removeClass("search-button-shadow");
 		});*/
 

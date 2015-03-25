@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cat Videos!</title>
+
+	<!--Lobster font-->
+	<link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+
+	<!--Stylesheet-->
+	<link rel="stylesheet" href="post.css">
+
+	<!--jQuery, Bootstrap, etc-->
+	<script src="../scripts/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<script src="../scripts/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+
+	<!--Jquery Rotate-->
+	<script src="../scripts/jQueryRotateCompressed.js"></script>
+
+	<!--Twitter typeahead garbage-->
+	<script src="../scripts/typeahead.bundle.js"></script>
+
+	<!--Local JS-->
+	<script src="../scripts/index.js"></script>
+
+	<!--Icon on tabs (Chrome/FF)-->
+	<link rel="shortcut icon" href="../img/shortcut.ico">
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Post a new video</h1>
+		</div>
+	</div>
+
+	<div class="container post-form-div">
+		<form>
+			<div class="row">
+				<div class="form-group col-lg-4">
+				<label for="title"></label>
+				Title<input type="text" class="form-control" name="title">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4">
+				<label for="url"></label>
+				Youtube Embed URL<input type="text" class="form-control" name="url">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4">
+				<label for="tags"></label>
+				Tags (separated by commas)<input type="text" class="form-control" name="tags">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4">
+				<label for="user"></label>
+				User (who's posting this?)<input type="text" class="form-control" name="user">
+				</div>
+			</div>
+			<input type="submit">
+		</form>
+
+
+</body>
+
+</html>

@@ -6,7 +6,13 @@
 	text-align: center;
 }
 
+.top-links-container {
+	font-size: 22px;
+	text-align: center;
+}
+
 .formSearchbar {
+	margin-top: 30px;
 	text-align: center;
 }
 
