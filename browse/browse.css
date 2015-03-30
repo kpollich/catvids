@@ -1,0 +1,23 @@
+* {
+	font-family: 'Lobster', cursive;
+}
+
+#video-list {
+	list-style-type: none;
+}
+
+.expand-video {
+	display: none;
+}
+
+.video-link {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.video-link:hover {
+	  transition: all 0.3s ease 0s;
+	  -webkit-transition: all 0.5s ease 0s;
+	   color: #95a5a6;
+	   cursor: default;
+}
