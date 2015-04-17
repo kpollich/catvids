@@ -63,3 +63,32 @@
 </body>
 
 </html>
+
+<script>
+
+var api = "http://166.66.145.176:8080/";
+
+/*$.ajax({
+	type: "GET",
+	dataType: 'jsonp',
+	url: api,
+	crossDomain: true
+})
+	.done(function(data) {
+		alert("we did it");
+	})
+	.fail( function() {
+		alert("shit broke");
+	});
+*/
+
+var http_request = new XMLHttpRequest();
+http_request.onreadystatechange = function() {
+	var jsonObj = JSON.parse(http_request.responseText);
+
+	console.log(jsonObj);
+}
+http_request.open("GET", api, true);
+http_request.send();
+
+</script>
