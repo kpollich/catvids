@@ -1,3 +1,15 @@
+//GOT THIS HERE THANKS http://stackoverflow.com/questions/21607808/convert-a-youtube-video-url-to-embed-code
+function getId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+
 $(document).ready(function() {
 
 /*************EVENT HANDLERS**************************************************************/	
@@ -17,7 +29,11 @@ $(document).ready(function() {
 
 		console.log(data.Title);
 
-		$("#randomVideoContainer").append("<iframe src=\"" + data.Url + "\"></iframe>");
+		var embed = getId(data.Url);
+
+		console.log(embed);
+
+		$("#randomVideoContainer").append('<iframe width="560" height="315" src="http://www.youtube.com/embed/"' + embed + 'frameborder="0" allowfullscreen></iframe>');
 
 
 
