@@ -44,7 +44,7 @@
 
 <div class="container" id="videos-wrapper">
 	<ul id="video-list">
-		<p>
+		<li>
 			<div class="video-link">
 				<div class="vote-container">
 					<span class="upmeow-text">666</span>
@@ -56,58 +56,10 @@
 			</div>
 			<li class="tags">Tags: cute, kittens, slide</li>
 			<li class="expand-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/gppbrYIcR80?feature=player_detailpage" frameborder="0" allowfullscreen></iframe></li>
-		</p>
+		</li>
 	</ul>
 </div>
 
 </body>
 
 </html>
-
-<script>
-
-var api = "http://166.66.145.176:8080/";
-
-/*$.ajax({
-	type: "GET",
-	dataType: 'jsonp',
-	url: api,
-	crossDomain: true
-})
-	.done(function(data) {
-		alert("we did it");
-	})
-	.fail( function() {
-		alert("shit broke");
-	});
-*/
-
-var http_request = new XMLHttpRequest();
-http_request.onreadystatechange = function() {
-	if (http_request.readyState == 4){
-		var jsonObj = JSON.parse(http_request.responseText);
-
-		console.log(jsonObj);
-	}
-}
-http_request.open("GET", api, true);
-http_request.send();
-
-document.write("<div class=\"container\" id=\"videos-wrapper\">\
-	<ul id=\"video-list\">\
-		<p>\
-			<div class=\"video-link\">\
-				<div class=\"vote-container\">\
-					<span class=\"upmeow-text\">"+jsonObj.UpMeows+"</span>\
-					<img class=\"upmeow\" title=\"UpMeow this post! Purr!!\" src=\"../img/Giant-Cat-Head-1.jpg\" height=\"30\" width=\"30\">\
-					<img class=\"downmeow\" title=\"DownMeow this post! Hiss!\" src=\"../img/Giant-Cat-Head-1.jpg\" height=\"30\" width=\"30\">\
-					<span class=\"downmeow-text\">"+jsonObj.DownMeow+"</span>\
-				</div>\
-				<span class=\"post-hover\">"+jsonObj.Title+"</span>\
-			</div>\
-			<li class="\tags\">Tags: cute, kittens, slide</li>\
-			<li class=\"expand-video\"><iframe width=\"640\" height=\"360\" src=\""+jsonObj.Url+" frameborder=\"0\" allowfullscreen></iframe></li>\
-		</p>\
-	</ul>\
-</div>");
-</script>
