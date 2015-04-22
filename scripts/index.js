@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+/*************EVENT HANDLERS**************************************************************/	
 	$("#submit-search").one("click", function(event) {
 		var angle = 0;
 		setInterval(function(){
@@ -7,13 +9,23 @@ $(document).ready(function() {
 		},10);
 	});
 
-	/*$(".search-button").hover(
-		function() {
-			$(this).addClass("search-button-shadow");
-		},
-		function() {
-			$(this).removeClass("search-button-shadow");
-		});*/
+	$("#submit-random").on("click", function(event) {
+		event.preventDefault();
+		var api = "http://floyd.cs.millersville.edu:8080/randomVideo"
+		$.getJSON( api, function ( data ) {
+		console.log(data);
+
+		console.log(data.Title);
+
+		$("#randomVideoContainer").append("<iframe src=\"" + data.url + "\"></iframe>");
+
+
+
+		//console.log(video);
+
+
+		});
+	});
 
 /****************************************************************************************/
 	//Typeahead Stuff
@@ -59,5 +71,7 @@ $(document).ready(function() {
 			source: substringMatcher(categories)
 	}); 
 /****************************************************************************************/
+
+
 
 });
