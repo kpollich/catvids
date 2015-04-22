@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 		console.log(data.Title);
 
-		$("#randomVideoContainer").append("<iframe src=\"" + data.url + "\"></iframe>");
+		$("#randomVideoContainer").append("<iframe src=\"" + data.Url + "\"></iframe>");
 
 
 
