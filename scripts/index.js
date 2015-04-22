@@ -25,20 +25,12 @@ $(document).ready(function() {
 		event.preventDefault();
 		var api = "http://floyd.cs.millersville.edu:8080/randomVideo"
 		$.getJSON( api, function ( data ) {
-		console.log(data);
-
-		console.log(data.Title);
-
+		
 		var embed = getId(data.Url);
 
-		console.log(embed);
+		$("#randomVideoContainer").empty();
 
-		$("#randomVideoContainer").append('<iframe width="560" height="315" src="https://www.youtube.com/embed/"' + embed + 'frameborder="0" allowfullscreen></iframe>');
-
-		//console.log($)
-
-		//console.log(video);
-
+		$("#randomVideoContainer").append('<iframe id="appendedRandomVid" width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>');
 
 		});
 	});
