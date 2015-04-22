@@ -33,9 +33,9 @@ $(document).ready(function() {
 
 		console.log(embed);
 
-		$("#randomVideoContainer").append('<iframe width="560" height="315" src="http://www.youtube.com/embed/"' + embed + 'frameborder="0" allowfullscreen></iframe>');
+		$("#randomVideoContainer").append('<iframe width="560" height="315" src="https://www.youtube.com/embed/"' + embed + 'frameborder="0" allowfullscreen></iframe>');
 
-
+		//console.log($)
 
 		//console.log(video);
 
