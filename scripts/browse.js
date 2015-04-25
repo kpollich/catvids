@@ -41,18 +41,19 @@ function getId(url) {
 //Load popular videos via catDB API
 getPopularVideos($("#videos-wrapper"));	
 	
-$(".post-hover").on("click", function() {
-	console.log($(this));
+$("body").on("click", ".post-hover", function() {
+
+	alert ($(this).parent());
 	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
 	});
 });
 
-$(".upmeow").on ("click", function() {
+$("body").on ("click", ".upmeow", function() {
 	  $(this).rotate({animateTo:360});
 	  $(this).parent().find(".upmeow-text").css("background-color", "orange");
 });
 
-$(".downmeow").on ("click", function() {
+$("body").on ("click", ".downmeow", function() {
 	  $(this).rotate({animateTo:180});
 	  $(this).nextAll(".downmeow-text").css("background-color", "cyan");
 });
