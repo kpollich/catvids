@@ -20,17 +20,17 @@ function getPopularVideos (appendToId) {
 				var vidLiElements = '<li class="expand-video">\
 										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
 									</li>';
-
-				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
-
 				
-									//<a href="../comment/index.html?vidId=69">Comment on this video</a>
-									//<a href="../comment/index.html?vidId=' + val.VidId + '">Comment on this video</a>\
 				var vidCommentsLink = '<li class="comment-li">\
 											<a href="../comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
 										</li>';
 
-				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy + vidLiElements + vidCommentsLink + '</li></ul>');
+				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy + vidCommentsLink + '</li></ul>');
+
+				$("#"+val.CatVidId).one("click", ".post-hover", function() {
+					$(this).parent().parent().append(vidLiElements);
+					$(this).addClass("toggle-video");
+				});
 
 				$("#"+val.CatVidId).one("click", ".upmeow", function() {
 	  				$(this).rotate({animateTo:360});
@@ -92,11 +92,7 @@ function downMeowVideo(catVidId) {
 
 //Load popular videos via catDB API
 getPopularVideos($("#videos-wrapper"));	
-	
-$("").on("click", ".post-hover", function() {
 
-	alert ($(this).parent());
-	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
-	});
+$("body").on ("click", ".toggle-video", function() {
+	$(this).parent().nextAll('.expand-video').toggle();
 });
-
