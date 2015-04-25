@@ -21,8 +21,6 @@ function getPopularVideos (appendToId) {
 										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
 									</li>';
 
-				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
-
 				
 									//<a href="../comment/index.html?vidId=69">Comment on this video</a>
 									//<a href="../comment/index.html?vidId=' + val.VidId + '">Comment on this video</a>\
