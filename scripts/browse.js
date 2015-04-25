@@ -1,11 +1,10 @@
-function getPopularVideos (appendToId) {
+var api = "http://192.168.0.5:8080";
 
-		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
-		var api = "http://192.168.0.5:8080/getPopularVideos";
-		$.getJSON (api, function (data) {
+function getPopularVideos (appendToId) {
+		$.getJSON (api+"/getPopularVideos", function (data) {
 			$.each (data, function (key, val) {
 
-				var voteContainer = '<div class="video-link" id="' + val.VidId + '">\
+				var voteContainer = '<div class="video-link" id="' + val.CatVidId + '">\
 									 <div class="vote-container">\
 									 <span class="upmeow-text">' + val.UpMeows + '</span>\
 									 <img class="upmeow" title="UpMeow this post! Purr!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
@@ -22,8 +21,29 @@ function getPopularVideos (appendToId) {
 									</li>';
 
 				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
+
+				$("#"+val.CatVidId).one("click", ".upmeow", function() {
+	  				$(this).rotate({animateTo:360});
+	  				$(this).parent().find(".upmeow-text").css("background-color", "orange");
+	  				var catVidId = $(this).parent().parent().attr('id');
+	 				upMeowVideo(catVidId);
+	 				//add 1 to upmeow
+	  				var newVote = Number($(this).parent().find(".upmeow-text").text()) + 1;
+	  				$(this).parent().find(".upmeow-text").text(newVote);			
+				});
+
+				$("#"+val.CatVidId).one("click", ".downmeow", function() {
+	  				$(this).rotate({animateTo:180});
+	  				$(this).nextAll(".downmeow-text").css("background-color", "cyan");
+	  				var catVidId = $(this).parent().parent().attr('id');
+	  				downMeowVideo(catVidId);
+	  				//add 1 to downmeow
+	  				var newVote = Number($(this).parent().find(".downmeow-text").text()) + 1;
+	  				$(this).parent().find(".downmeow-text").text(newVote);
+				});
 		});
 	});
+
 }
 
 function getId(url) {
@@ -37,25 +57,25 @@ function getId(url) {
     }
 }
 
-function upMeowVideo(catVidId) {
-		
+function upMeowVideo(catVidId) {	
 	$.ajax({
     	url: api +"/upMeow/" + catVidId,
-    	type: 'PUT',
+    	method: "PUT",
+    	//crossDomain : true,
     	success: function(result) {
-            console.log("upMeowed");
-
+    		//turn off other option
+    		$("#"+catVidId).off("click", ".downmeow");
     	}
     });
 }	
 
 function downMeowVideo(catVidId) {
-
 	$.ajax({
-    	url: api + "/donwnMeow/" + catVidId,
+    	url: api + "/downMeow/" + catVidId,
     	type: 'PUT',
     	success: function(result) {
-        	console.log("downMeowed");
+    		//turn off other option
+    		$("#"+catVidId).off("click", ".upmeow");
     	}
     });
 }
@@ -63,41 +83,9 @@ function downMeowVideo(catVidId) {
 //Load popular videos via catDB API
 getPopularVideos($("#videos-wrapper"));	
 	
-$(".post-hover").on("click", function() {
-	console.log($(this));
-	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {});
+$("").on("click", ".post-hover", function() {
+
+	alert ($(this).parent());
+	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
+	});
 });
-
-$(".upmeow").on ("click", function() {
-	  $(this).rotate({animateTo:360});
-	  $(this).parent().find(".upmeow-text").css("background-color", "orange");
-	  var catVidId = $(this).parent.parent.id;
-	  console.log(catVidId);
-});
-
-$(".downmeow").on ("click", function() {
-	  $(this).rotate({animateTo:180});
-	  $(this).nextAll(".downmeow-text").css("background-color", "cyan");
-});
-
-
-
-/*
-
-<ul id="video-list">
-		<li>
-			<div class="video-link">
-				<div class="vote-container">
-					<span class="upmeow-text">666</span>
-					<img class="upmeow" title="UpMeow this post! Purr!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">
-					<img class="downmeow" title="DownMeow this post! Hiss!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">
-					<span class="downmeow-text">420</span>
-				</div>
-				<span class="post-hover">Kittens on a slide! Mega cute!</span>
-			</div>
-			<li class="tags">Tags: cute, kittens, slide</li>
-			<li class="expand-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/gppbrYIcR80?feature=player_detailpage" frameborder="0" allowfullscreen></iframe></li>
-		</li>
-	</ul>
-
-*/
