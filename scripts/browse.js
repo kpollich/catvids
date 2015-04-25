@@ -1,15 +1,47 @@
-$(document).ready( function () {
+function getPopularVideos (appendToId) {
 
-	function getId(url) {
-	    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-	    var match = url.match(regExp);
+	
+		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
+		var api = "http://192.168.0.5:8080/getPopularVideos";
 
-	    if (match && match[2].length == 11) {
-	        return match[2];
-	    } else {
-	        return 'error';
-	    }
-	}
+		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
+		var api = "http://192.168.0.5:8080/getPopularVideos";
+		$.getJSON (api, function (data) {
+			$.each (data, function (key, val) {
+
+				var voteContainer = '<div class="video-link" id="' + val.VidId + '">\
+									 <div class="vote-container">\
+									 <span class="upmeow-text">' + val.UpMeows + '</span>\
+									 <img class="upmeow" title="UpMeow this post! Purr!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
+									 <img class="downmeow" title="DownMeow this post! Hiss!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
+									 <span class="downmeow-text">' + val.DownMeows + '</span></div>';
+
+				var vidTitle = '<span class="post-hover">' + val.Title + '</span></div>';
+
+				var embed = getId(val.Url);
+
+				var vidLiElements = '<li class="tags">Tags: ' + val.Tags + '</li>\
+									<li class="expand-video">\
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
+									</li>';
+
+				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
+		});
+	});
+}
+
+function getId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+
+
 
 	function upMeowVideo() {
 		
@@ -35,53 +67,24 @@ $(document).ready( function () {
     	});
 
 	}
+
+//Load popular videos via catDB API
+getPopularVideos($("#videos-wrapper"));	
 	
+$(".post-hover").on("click", function() {
+	console.log($(this));
+	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
+	});
+});
 
-	function getPopularVideos (appendToId) {
+$(".upmeow").on ("click", function() {
+	  $(this).rotate({animateTo:360});
+	  $(this).parent().find(".upmeow-text").css("background-color", "orange");
+});
 
-		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
-		var api = "http://192.168.0.5:8080/getPopularVideos";
-		$.getJSON (api, function (data) {
-			$.each (data, function (key, val) {
-
-				var voteContainer = '<div class="video-link">\
-									 <div class="vote-container">\
-									 <span class="upmeow-text">' + val.UpMeows + '</span>\
-									 <img class="upmeow" title="UpMeow this post! Purr!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
-									 <img class="downmeow" title="DownMeow this post! Hiss!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
-									 <span class="downmeow-text">' + val.DownMeows + '</span></div>';
-
-				var vidTitle = '<span class="post-hover">' + val.Title + '</span></div>';
-
-				var embed = getId(val.Url);
-
-				var vidLiElements = '<li class="tags">Tags: ' + val.Tags + '</li>\
-									<li class="expand-video">\
-										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
-									</li>';
-
-				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
-
-				$(".post-hover").click( function() {
-					console.log("ayy this shit got clicked or whatever");
-					$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
-					});
-				});
-
-				$(".upmeow").click ( function() {
-					  $(this).rotate({animateTo:360});
-					  $(this).parent().find(".upmeow-text").css("background-color", "orange");
-				});
-
-				$(".downmeow").click ( function() {
-					  $(this).rotate({animateTo:180});
-					  $(this).nextAll(".downmeow-text").css("background-color", "cyan");
-				});
-			});
-		});
-	}
-	//Load popular videos via catDB API
-	getPopularVideos($("#videos-wrapper"));	
+$(".downmeow").on ("click", function() {
+	  $(this).rotate({animateTo:180});
+	  $(this).nextAll(".downmeow-text").css("background-color", "cyan");
 });
 
 
