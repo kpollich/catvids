@@ -6,14 +6,16 @@ function getPopularVideos (appendToId) {
 		$.getJSON (api, function (data) {
 			$.each (data, function (key, val) {
 
-				var voteContainer = '<div class="video-link" id="' + val.VidId + '">\
+				var voteContainer = '<div class="video-link" id="' + val.CatVidId + '">\
 									 <div class="vote-container">\
 									 <span class="upmeow-text">' + val.UpMeows + '</span>\
 									 <img class="upmeow" title="UpMeow this post! Purr!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
 									 <img class="downmeow" title="DownMeow this post! Hiss!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
 									 <span class="downmeow-text">' + val.DownMeows + '</span></div>';
 
-				var vidTitle = '<span class="post-hover">' + val.Title + '</span></div>';
+				var vidTitle = '<span class="post-hover">' + val.Title + '</span>';
+
+				var vidPostedBy = '<span class="posted-by"> Posted by: ' + val.Poster + '</span></div>'
 
 				var embed = getId(val.Url);
 
@@ -21,7 +23,13 @@ function getPopularVideos (appendToId) {
 										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
 									</li>';
 
-				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
+									//<a href="../comment/index.html?vidId=69">Comment on this video</a>
+									//<a href="../comment/index.html?vidId=' + val.VidId + '">Comment on this video</a>\
+				var vidCommentsLink = '<li class="comment-li">\
+											<a href="../comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
+										</li>';
+
+				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy + vidLiElements + vidCommentsLink + '</li></ul>');
 		});
 	});
 }

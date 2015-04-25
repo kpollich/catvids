@@ -10,6 +10,11 @@
 	/*display: none;*/
 }
 
+.posted-by {
+	font-size: 14px;
+	color: #696969;
+}
+
 .video-link {
 	font-weight: bold;
 	font-size: 18px;
