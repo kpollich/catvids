@@ -1,9 +1,5 @@
 function getPopularVideos (appendToId) {
 
-	
-		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
-		var api = "http://192.168.0.5:8080/getPopularVideos";
-
 		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
 		var api = "http://192.168.0.5:8080/getPopularVideos";
 		$.getJSON (api, function (data) {
@@ -41,45 +37,42 @@ function getId(url) {
     }
 }
 
-
-
-	function upMeowVideo() {
+function upMeowVideo(catVidId) {
 		
-		var catVidId = "2"
-		$.ajax({
-    		url: api +"/upMeow" + /catVidId;
-    		type: 'PUT',
-    		success: function(result) {
-        	// 
-    		}
-    	});
-	}	
+	$.ajax({
+    	url: api +"/upMeow/" + catVidId,
+    	type: 'PUT',
+    	success: function(result) {
+            console.log("upMeowed");
 
-	function downMeowVideo() {
+    	}
+    });
+}	
 
-		var catVidId = "2";
-		$.ajax({
-    		url: api + "/donwnMeows/" + catVidId;
-    		type: 'PUT',
-    		success: function(result) {
-        	// Do something with the result
-    		}
-    	});
+function downMeowVideo(catVidId) {
 
-	}
+	$.ajax({
+    	url: api + "/donwnMeow/" + catVidId,
+    	type: 'PUT',
+    	success: function(result) {
+        	console.log("downMeowed");
+    	}
+    });
+}
 
 //Load popular videos via catDB API
 getPopularVideos($("#videos-wrapper"));	
 	
 $(".post-hover").on("click", function() {
 	console.log($(this));
-	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
-	});
+	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {});
 });
 
 $(".upmeow").on ("click", function() {
 	  $(this).rotate({animateTo:360});
 	  $(this).parent().find(".upmeow-text").css("background-color", "orange");
+	  var catVidId = $(this).parent.parent.id;
+	  console.log(catVidId);
 });
 
 $(".downmeow").on ("click", function() {
