@@ -17,8 +17,7 @@ function getPopularVideos (appendToId) {
 
 				var embed = getId(val.Url);
 
-				var vidLiElements = '<li class="tags">Tags: ' + val.Tags + '</li>\
-									<li class="expand-video">\
+				var vidLiElements = '<li class="expand-video">\
 										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
 									</li>';
 
@@ -41,13 +40,6 @@ function getId(url) {
 //Load popular videos via catDB API
 getPopularVideos($("#videos-wrapper"));	
 	
-$("body").on("click", ".post-hover", function() {
-
-	alert ($(this).parent());
-	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
-	});
-});
-
 $("body").on ("click", ".upmeow", function() {
 	  $(this).rotate({animateTo:360});
 	  $(this).parent().find(".upmeow-text").css("background-color", "orange");
@@ -71,7 +63,6 @@ $("body").on ("click", ".downmeow", function() {
 				</div>
 				<span class="post-hover">Kittens on a slide! Mega cute!</span>
 			</div>
-			<li class="tags">Tags: cute, kittens, slide</li>
 			<li class="expand-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/gppbrYIcR80?feature=player_detailpage" frameborder="0" allowfullscreen></iframe></li>
 		</li>
 	</ul>
