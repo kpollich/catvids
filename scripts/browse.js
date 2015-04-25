@@ -11,10 +11,36 @@ $(document).ready( function () {
 	    }
 	}
 
+	function upMeowVideo() {
+		
+		var catVidId = "2"
+		$.ajax({
+    		url: api +"/upMeow" + /catVidId;
+    		type: 'PUT',
+    		success: function(result) {
+        	// 
+    		}
+    	});
+	}	
+
+	function downMeowVideo() {
+
+		var catVidId = "2";
+		$.ajax({
+    		url: api + "/donwnMeows/" + catVidId;
+    		type: 'PUT',
+    		success: function(result) {
+        	// Do something with the result
+    		}
+    	});
+
+	}
+	
+
 	function getPopularVideos (appendToId) {
 
-		var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
-
+		//var api = "http://floyd.cs.millersville.edu:8080/getPopularVideos";
+		var api = "http://192.168.0.5:8080/getPopularVideos";
 		$.getJSON (api, function (data) {
 			$.each (data, function (key, val) {
 
@@ -57,6 +83,8 @@ $(document).ready( function () {
 	//Load popular videos via catDB API
 	getPopularVideos($("#videos-wrapper"));	
 });
+
+
 
 /*
 
