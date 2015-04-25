@@ -2,6 +2,10 @@
 	font-family: 'Lobster', cursive;
 }
 
+.home-link {
+  color: #333;
+}
+
 #top-bar {
 	text-align: center;
 }
