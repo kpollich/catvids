@@ -11,16 +11,26 @@ function getPopularVideos (appendToId) {
 									 <img class="downmeow" title="DownMeow this post! Hiss!" src="../img/Giant-Cat-Head-1.jpg" height="30" width="30">\
 									 <span class="downmeow-text">' + val.DownMeows + '</span></div>';
 
-				var vidTitle = '<span class="post-hover">' + val.Title + '</span></div>';
+				var vidTitle = '<span class="post-hover">' + val.Title + '</span>';
+
+				var vidPostedBy = '<span class="posted-by"> Posted by: ' + val.Poster + '</span></div>'
 
 				var embed = getId(val.Url);
 
-				var vidLiElements = '<li class="tags">Tags: ' + val.Tags + '</li>\
-									<li class="expand-video">\
+				var vidLiElements = '<li class="expand-video">\
 										<iframe width="560" height="315" src="https://www.youtube.com/embed/' + embed + '" frameborder="0" allowfullscreen></iframe>\
 									</li>';
 
 				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidLiElements + '</li></ul>');
+
+				
+									//<a href="../comment/index.html?vidId=69">Comment on this video</a>
+									//<a href="../comment/index.html?vidId=' + val.VidId + '">Comment on this video</a>\
+				var vidCommentsLink = '<li class="comment-li">\
+											<a href="../comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
+										</li>';
+
+				$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy + vidLiElements + vidCommentsLink + '</li></ul>');
 
 				$("#"+val.CatVidId).one("click", ".upmeow", function() {
 	  				$(this).rotate({animateTo:360});
@@ -89,3 +99,4 @@ $("").on("click", ".post-hover", function() {
 	$(this).parent().nextAll(".expand-video").slideToggle("slow", function() {
 	});
 });
+

@@ -7,7 +7,12 @@
 }
 
 .expand-video {
-	display: none;
+	/*display: none;*/
+}
+
+.posted-by {
+	font-size: 14px;
+	color: #696969;
 }
 
 .video-link {
