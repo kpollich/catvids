@@ -1,6 +1,6 @@
 //Load popular videos via catDB API
 $.getJSON (api + "getAllVideos", function (data){
-			showVideos($("#videoContainer"),data);
+			showVideos("../", $("#videoContainer"),data);
 		});
 
 $("body").on ("click", ".toggle-video", function() {

@@ -19,7 +19,7 @@ function getVideoById(vidId){
 	var vidJSON;
 
 	$.ajax({
-		url: api + "getVidByVidId/" + vidId;,
+		url: api + "getVideoByVidId/" + vidId,
 		async:false,
 		dataType: 'json',
 		success: function(data){

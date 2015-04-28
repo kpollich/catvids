@@ -15,7 +15,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		var userName = $("body").find("#searchbar").val();
 		$.getJSON (api + "getVideosByUser/" + userName, function (data){
-			showVideos($("#videoContainer"),data);
+			showVideos("", $("#videoContainer"),data);
 		});
 		//getVideos($("#videoContainer"),"/getVideosByUser/"+userName,"what")
 	});
@@ -25,7 +25,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		var userTags = $("body").find("#searchbar").val();
 		$.getJSON (api + "getVideosByTags",{tags: userTags }, function (data){
-			showVideos($("#videoContainer"),data);
+			showVideos("", $("#videoContainer"),data);
 		});
 	});
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
 	$("#submit-allVideos").on("click", function(event){
 		event.preventDefault();
 		$.getJSON (api + "getAllVideos", function (data){
-			showVideos($("#videoContainer"),data);
+			showVideos("", $("#videoContainer"),data);
 		});
 	});
 	
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$("#videoContainer").empty();
 		$.getJSON( api +"randomVideo", function ( data ) {
-			showSingleVideo (data);
+			showSingleVideo ("", data);
 		});
 	});
 

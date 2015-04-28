@@ -13,7 +13,7 @@ function getId(url) {
     }
 }
 
-function showVideos(appendToId,data){
+function showVideos(dir, appendToId, data){
 	$(appendToId).empty();
 	$.each (data, function (key, val) {
 				
@@ -35,7 +35,7 @@ function showVideos(appendToId,data){
 							</li>';
 				
 		var vidCommentsLink = '<li class="comment-li">\
-									<a href="comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
+									<a href="' + dir + 'comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
 							</li>';
 
 		$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy + vidCommentsLink + '</li></ul>');
@@ -96,7 +96,7 @@ function downMeowVideo(catVidId) {
 }
 
 
-function showSingleVideo (data) {
+function showSingleVideo (dir, data) {
 	var voteContainer = '<div class="video-link" id="' + data.CatVidId + '">\
 									 <div class="vote-container">\
 									 <span class="upmeow-text">' + data.UpMeows + '</span>\
@@ -114,7 +114,7 @@ function showSingleVideo (data) {
 						</li>';
 	
 	var vidCommentsLink = '<li class="comment-li">\
-								<a href="../comment/index.html?vidId=' + data.CatVidId + '">Comment on this video</a>\
+								<a href="' + dir + 'comment/index.html?vidId=' + data.CatVidId + '">Comment on this video</a>\
 							</li>';
 
 	$("#videoContainer").append('<div align="center"><ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy +vidLiElements+ vidCommentsLink + '</li></ul></div>');
