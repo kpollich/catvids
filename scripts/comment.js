@@ -16,10 +16,10 @@ $(document).ready(function(){
 	}
 
 
-
 function getVideoById(vidId){
 	var vidJSON;
-	var api = "http://192.168.0.5:8080/randomVideo";
+	//var api = "http://192.168.0.5:8080/randomVideo";
+	var l_api = api + "getVidByVidId/" + vidId;
 
 
 	$.ajax({

@@ -10,7 +10,7 @@ $(document).ready( function() {
 
     $.ajax({
         type: 'POST',
-        url: 'http://floyd.cs.millersville.edu:8080/addVideo',
+        url: api + "addVideo",
         data: postData,
         dataType: 'json',
         complete: function(json) {
