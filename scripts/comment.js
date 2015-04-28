@@ -13,6 +13,31 @@ $(document).ready(function(){
 	$("#video-title").text(video.Title);
 	}
 
+	loadAllComments();
+
+function loadAllComments() {
+	$.ajax({
+		url: api + "getComments/" + vidId,
+		async: false,
+		dataType: 'json',
+		success: function(data){
+			commentJSON = data;
+			console.log(commentJSON);
+			var to_append = "";
+
+			commentJSON.forEach (function (e) {
+				console.log(e);
+				to_append += "<div class='meme'>Posted by user" + e.Poster + "<ul class='comment-ul'><li class='comment-li'>" + e.CommentDesc + "</li></ul></div>";
+			});
+			
+			console.log(to_append);
+			$("#comment-chain").append(to_append);
+
+		}
+	});
+
+}
+
 
 function getVideoById(vidId){
 	var vidJSON;
