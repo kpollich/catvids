@@ -51,12 +51,38 @@
 			<h1>Comments for <span id="video-title"></span></h1>
 		</div>
 	</div>
-	
-	<div class="container" id="video-wrapper">
-	</div>
+<div class="container" id="video-wrapper"> </div>	
+	<form id="comment-form" class="form-horizontal">
+	<fieldset>
 
-	<div class="container" id="comment-wrapper">
-	</div>
+	<!-- Form Name -->
+	<legend>Let's Talk About Cats</legend>
+
+	<!-- Text input-->
+	<div class="control-group">
+	  	<label class="control-label" for="userName">User Name</label>
+  	<div class="controls">
+    	<input id="userName" name="userName" type="text" placeholder="user name" class="input-xlarge">
+    
+  	</div>
+</div>
+<input id = "catvidID" type="hidden" name="catVidId" value="">
+<input id = "parentId" type="hidden" name="parentId" value="">
+<!-- Textarea -->
+<div class="control-group">
+  <label class="control-label" for="comment">Comment</label>
+  <div class="controls">                     
+    <textarea id="comment" name="commentBody">Cats, am I right guys?</textarea>
+  </div>
+</div>
+
+<input type="submit" value="Comment"> 
+
+
+</fieldset>
+</form>
+	
+<div class="container" id="comment-wrapper"></div>
 
 </body>
 </html>

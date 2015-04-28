@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 	//grab the url query string and parse it for the Vid ID
 	var pathname = $(location).attr("search");
-	console.log(pathname);
 	var vidId = pathname.substring(pathname.lastIndexOf("=")+1);
 	if (vidId == -1 || vidId == ""){
 		console.log("Hey some shit went wrong I guess.");
@@ -32,4 +31,24 @@ function getVideoById(vidId){
 	
 }
 
+
+$("#comment-form").submit(function(event){
+
+	event.preventDefault();
+
+	$("#catvidID").val(vidId);
+	var postData = $(this).serializeArray();
+	console.log(postData);	
+	$.ajax({
+        type: 'POST',
+        url: api + "postComment",
+        data: postData,
+        dataType: 'json',
+        complete: function(json) {
+         	$("#comment").val("");
+         	$("#userName").val("");
+
+          }
+        });
+    });
 });
