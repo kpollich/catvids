@@ -51,7 +51,7 @@ function showVideos(appendToId,data){
 
 		$("#"+val.CatVidId).one("click", ".upmeow", function() {
 	  		$(this).rotate({animateTo:360});
-	  		$(this).parent().find(".upmeow-text").css("background-color", "orange");
+	  		$(this).parent().find(".upmeow-text").css("color", "#E32D2D");
 	  		var catVidId = $(this).parent().parent().attr('id');
 	 		upMeowVideo(catVidId);
 	 		//add 1 to upmeow
@@ -61,7 +61,7 @@ function showVideos(appendToId,data){
 
 		$("#"+val.CatVidId).one("click", ".downmeow", function() {
 	  		$(this).rotate({animateTo:180});
-	  		$(this).nextAll(".downmeow-text").css("background-color", "cyan");
+	  		$(this).nextAll(".downmeow-text").css("color", "#28B5B5");
 	  		var catVidId = $(this).parent().parent().attr('id');
 	  		downMeowVideo(catVidId);
 	  		//add 1 to downmeow
@@ -74,7 +74,7 @@ function showVideos(appendToId,data){
 
 function upMeowVideo(catVidId) {	
 	$.ajax({
-    	url: api +"/upMeow/" + catVidId,
+    	url: api +"upMeow/" + catVidId,
     	method: "PUT",
     	//crossDomain : true,
     	success: function(result) {
@@ -86,7 +86,7 @@ function upMeowVideo(catVidId) {
 
 function downMeowVideo(catVidId) {
 	$.ajax({
-    	url: api + "/downMeow/" + catVidId,
+    	url: api + "downMeow/" + catVidId,
     	type: 'PUT',
     	success: function(result) {
     		//turn off other option
@@ -122,7 +122,7 @@ function showSingleVideo (data) {
 
 	$("#"+data.CatVidId).one("click", ".upmeow", function() {
 			$(this).rotate({animateTo:360});
-			$(this).parent().find(".upmeow-text").css("background-color", "");
+			$(this).parent().find(".upmeow-text").css("color", "#E32D2D");
 			var catVidId = $(this).parent().parent().attr('id');
 			upMeowVideo(catVidId);
 			//add 1 to upmeow
@@ -132,7 +132,7 @@ function showSingleVideo (data) {
 
 	$("#"+data.CatVidId).one("click", ".downmeow", function() {
 			$(this).rotate({animateTo:180});
-			$(this).nextAll(".downmeow-text").css("background-color", "cyan");
+			$(this).nextAll(".downmeow-text").css("color", "#28B5B5");
 			var catVidId = $(this).parent().parent().attr('id');
 			downMeowVideo(catVidId);
 			//add 1 to downmeow
