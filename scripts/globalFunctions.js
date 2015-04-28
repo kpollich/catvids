@@ -96,7 +96,7 @@ function downMeowVideo(catVidId) {
 }
 
 
-function showSingleVideo (dir,appendToId, data) {
+function showSingleVideo (dir, appendToId, data) {
 	var voteContainer = '<div class="video-link" id="' + data.CatVidId + '">\
 									 <div class="vote-container">\
 									 <span class="upmeow-text">' + data.UpMeows + '</span>\

@@ -41,7 +41,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		$("#videoContainer").empty();
 		$.getJSON( api +"randomVideo", function ( data ) {
-			showSingleVideo ("", data);
+			showSingleVideo ("", $("#videoContainer"), data);
 		});
 	});
 
