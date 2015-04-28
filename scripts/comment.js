@@ -23,6 +23,8 @@ function getVideoById(vidId){
 		dataType: 'json',
 		success: function(data){
 			vidJSON = data;
+			showSingleVideo('../',$("#video-wrapper"),vidJSON);
+
 		}
 	});
 
@@ -30,8 +32,6 @@ function getVideoById(vidId){
 
 	
 }
-
-
 $("#comment-form").submit(function(event){
 
 	event.preventDefault();
@@ -47,6 +47,7 @@ $("#comment-form").submit(function(event){
         complete: function(json) {
          	$("#comment").val("");
          	$("#userName").val("");
+         	$("#comment-wrapper").append(json);
 
           }
         });

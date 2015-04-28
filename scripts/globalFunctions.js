@@ -96,12 +96,12 @@ function downMeowVideo(catVidId) {
 }
 
 
-function showSingleVideo (dir, data) {
+function showSingleVideo (dir,appendToId, data) {
 	var voteContainer = '<div class="video-link" id="' + data.CatVidId + '">\
 									 <div class="vote-container">\
 									 <span class="upmeow-text">' + data.UpMeows + '</span>\
-									 <img class="upmeow" title="UpMeow this post! Purr!" src="img/Giant-Cat-Head-1.jpg" height="30" width="30">\
-									 <img class="downmeow" title="DownMeow this post! Hiss!" src="img/Giant-Cat-Head-1.jpg" height="30" width="30">\
+									 <img class="upmeow" title="UpMeow this post! Purr!" src="'+dir+'img/Giant-Cat-Head-1.jpg" height="30" width="30">\
+									 <img class="downmeow" title="DownMeow this post! Hiss!" src="'+dir+'img/Giant-Cat-Head-1.jpg" height="30" width="30">\
 									 <span class="downmeow-text">' + data.DownMeows + '</span></div>';
 
 	var vidTitle = '<span class="post-hover">' + data.Title + '</span>';
@@ -117,7 +117,7 @@ function showSingleVideo (dir, data) {
 								<a href="' + dir + 'comment/index.html?vidId=' + data.CatVidId + '">Comment on this video</a>\
 							</li>';
 
-	$("#videoContainer").append('<div align="center"><ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy +vidLiElements+ vidCommentsLink + '</li></ul></div>');
+	$(appendToId).append('<div align="center"><ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy +vidLiElements+ vidCommentsLink + '</li></ul></div>');
 
 
 	$("#"+data.CatVidId).one("click", ".upmeow", function() {
