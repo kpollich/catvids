@@ -40,7 +40,7 @@ $(document).ready(function() {
 	$("#submit-random").on("click", function(event) {
 		event.preventDefault();
 		$("#videoContainer").empty();
-		$.getJSON( api +"randomVideo", function ( data ) {
+		$.getJSON( api + "randomVideo", function ( data ) {
 			showSingleVideo ("", $("#videoContainer"), data);
 		});
 	});

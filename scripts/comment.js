@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	alert("javascript hit");
+
 	//grab the url query string and parse it for the Vid ID
 	var pathname = $(location).attr("search");
 	var vidId = pathname.substring(pathname.lastIndexOf("=")+1);
@@ -25,10 +27,14 @@ function loadAllComments() {
 			console.log(commentJSON);
 			var to_append = "";
 
-			commentJSON.forEach (function (e) {
-				console.log(e);
-				to_append += "<div class='meme'>Posted by user" + e.Poster + "<ul class='comment-ul'><li class='comment-li'>" + e.CommentDesc + "</li></ul></div>";
+			if (commentJSON != null)
+			{
+				commentJSON.forEach (function (e) {
+					console.log(e);
+					to_append += "<div class='meme'>Posted by user" + e.Poster + "<ul class='comment-ul'><li class='comment-li'>" + e.CommentDesc + "</li></ul></div>";
+			
 			});
+			}
 			
 			console.log(to_append);
 			$("#comment-chain").append(to_append);
@@ -57,9 +63,9 @@ function getVideoById(vidId){
 
 	
 }
-$("#comment-form").submit(function(event){
-
-	event.preventDefault();
+$("#comment-form").submit(function(e) {
+	e.preventDefault();
+	alert("SUBMIT");
 
 	$("#catvidID").val(vidId);
 	var postData = $(this).serializeArray();
@@ -72,8 +78,6 @@ $("#comment-form").submit(function(event){
         complete: function(json) {
          	$("#comment").val("");
          	$("#userName").val("");
-         	$("#comment-wrapper").append(json);
-
           }
         });
     });
