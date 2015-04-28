@@ -35,7 +35,7 @@ function showVideos(appendToId,data){
 							</li>';
 				
 		var vidCommentsLink = '<li class="comment-li">\
-									<a href="../comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
+									<a href="comment/index.html?vidId=' + val.CatVidId + '">Comment on this video</a>\
 							</li>';
 
 		$(appendToId).append('<ul id="video-list"><li>' + voteContainer + vidTitle + vidPostedBy + vidCommentsLink + '</li></ul>');
