@@ -60,11 +60,8 @@ function getVideoById(vidId){
 }
 $("#comment-form").submit(function(e) {
 	e.preventDefault();
-	alert("SUBMIT");
-
 	$("#catvidID").val(vidId);
 	var postData = $(this).serializeArray();
-	console.log(postData);	
 	$.ajax({
         type: 'POST',
         url: api + "postComment",
