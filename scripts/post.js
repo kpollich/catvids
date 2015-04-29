@@ -4,8 +4,6 @@ $(document).ready( function() {
 
     e.preventDefault(); //STOP default action
 
-    console.log("submitted");
-
     var postData = $(this).serializeArray();
 
     $.ajax({

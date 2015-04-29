@@ -1,12 +1,10 @@
 $(document).ready(function(){
 
-	alert("javascript hit");
-
 	//grab the url query string and parse it for the Vid ID
 	var pathname = $(location).attr("search");
 	var vidId = pathname.substring(pathname.lastIndexOf("=")+1);
 	if (vidId == -1 || vidId == ""){
-		console.log("Hey some shit went wrong I guess.");
+		console.log("Hey some STUFF went wrong I guess.");
 	
 	
 	}else{
@@ -24,19 +22,16 @@ function loadAllComments() {
 		dataType: 'json',
 		success: function(data){
 			commentJSON = data;
-			console.log(commentJSON);
 			var to_append = "";
 
 			if (commentJSON != null)
 			{
 				commentJSON.forEach (function (e) {
-					console.log(e);
 					to_append += "<div class='meme'>Posted by user" + e.Poster + "<ul class='comment-ul'><li class='comment-li'>" + e.CommentDesc + "</li></ul></div>";
 			
 			});
 			}
 			
-			console.log(to_append);
 			$("#comment-chain").append(to_append);
 
 		}
